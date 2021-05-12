@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+   <script>
+    var a2a_config = a2a_config || {};
+    
+    a2a_config.thanks = {
+    postShare: true,
+    ad: '<ins class=\"adsbygoogle\"\
+            style=\"display:inline-block;width:300px;height:250px\"\
+            data-ad-client=\"ca-pub-xxxxxxxxxxxxxxxx\"\
+            data-ad-slot=\"1234567890\"></ins>\
+        <\script>\
+        (adsbygoogle = window.adsbygoogle || []).push({});\
+        <\/script>'
+};
+    </script>
+    
+    <script async src="https://static.addtoany.com/menu/page.js"></script>
+    
+</head>
+
+<div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+    <a class="a2a_button_facebook"></a>
+    <a class="a2a_button_twitter"></a>
+    <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+</div>
+
+<script>
+// A custom "onShare" handler for AddToAny
+function my_addtoany_onshare(share_data) {
+
+    // Some fragment identifier
+    var hash_pi = '#3.1459';
+    // The shared URL
+    var old_url = share_data.url;
+    // Initialize new shared URL
+    var new_url = old_url;
+
+    // Add fragment identifier if not already added to the shared URL
+    if ( old_url.indexOf(hash_pi, old_url.length - hash_pi.length) === -1 ) {
+        new_url = old_url + hash_pi;
+    }
+
+    // Modify the share by returning an object
+    // with a "url" property containing the new URL
+    if (new_url != old_url) {
+        return {
+            url: new_url
+        };
+    }
+
+}
+
+// Setup AddToAny "onShare" callback function
+var a2a_config = a2a_config || {};
+a2a_config.callbacks = a2a_config.callbacks || [];
+a2a_config.callbacks.push({
+    share: my_addtoany_onshare
+});
+
+
+</script>
+
+</html>
